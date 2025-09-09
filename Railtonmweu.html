@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railton Mweu's Journey with Ajira Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster {
+            width: 800px;
+            height: 1200px;
+            position: relative;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 70%, #fbbf24 100%);
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Ajira Digital Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-20deg);
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 10px;
+            text-align: center;
+            z-index: 1;
+            white-space: nowrap;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .watermark::before {
+            content: "AJIRA";
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .watermark::after {
+            content: "DIGITAL";
+            display: block;
+        }
+        
+        /* Content Container */
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        .profile-text h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .profile-text p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .quote {
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #fbbf24;
+        }
+        
+        /* Skills Section */
+        .skills-section {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            padding: 30px 40px;
+            display: flex;
+            gap: 40px;
+            }
+        
+        .skills-column {
+            flex: 1;
+        }
+        
+        .skills-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+            font-weight: bold;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #1e3a8a;
+            font-weight: 500;
+        }
+        
+        .checkmark {
+            color: #16a34a;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            padding: 30px 40px;
+            color: #1e3a8a;
+        }
+        
+        .benefits-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .benefit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        /* Footer */
+        .footer-section {
+            background: #1e3a8a;
+            color: white;
+            padding: 30px 40px;
+            flex-grow: 1;
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            color: #fbbf24;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .job-platforms {
+            font-style: italic;
+            margin-top: 8px;
+        }
+        
+        .message-text {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <!-- Ajira Digital Watermark -->
+        <div class="watermark"></div>
+        
+        <div class="content">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="main-title">RAILTON MWEU'S JOURNEY<br>WITH AJIRA DIGITAL</h1>
+                <p class="subtitle">EMPOWERING YOUTH THROUGH ONLINE WORK</p>
+            </div>
+            
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="profile-image">
+                    RAILTON<br>MWEU<br>SUCCESS<br>STORY
+                </div>
+                <div class="profile-text">
+                    <h3>What is Ajira Digital?</h3>
+                    <p>Ajira Digital is a government initiative by Kenya's Ministry of ICT, aimed at empowering youth by providing free digital skills training and access to online job opportunities.</p>
+                    <div class="quote">
+                        "But Ajira is not just about earning, it's about self-development, building confidence, gaining experience, and growing personally and professionally. Ajira gave me more than income – it gave me confidence, purpose, and hope."
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="skills-section">
+                <div class="skills-column">
+                    <h3>Through Ajira, I received training in:</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Digital marketing</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Content writing</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Graphic design</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Transcription</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Free digital skills training</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Consistency and self reliance</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-column">
+                    <h3>The program offers:</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Free digital skills training</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Access to Ajira Youth Empowerment Centres</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Links to real and online jobs both locally and internationally</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefits Section -->
+            <div class="benefits-section">
+                <h3>But Ajira is not just about earning money.</h3>
+                <div class="benefit-list">
+                    <div class="benefit-item">
+                        <span class="checkmark">✓</span>
+                        <span>Building discipline, consistency, and self-reliance</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="checkmark">✓</span>
+                        <span>Forming lifelong friendships and networks</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="checkmark">✓</span>
+                        <span>Gaining confidence to face the digital world with purpose.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer-section">
+                <div class="footer-column">
+                    <h3>WHY JOIN Ajira?</h3>
+                    <div class="footer-text">
+                        <div class="skill-item">
+                            <span class="checkmark">✓</span>
+                            <span>Access to real online jobs</span>
+                        </div>
+                        <div class="job-platforms">(Upwork, Fiverr, Freelancer etc.)</div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>MY MESSAGE TO YOUTH:</h3>
+                    <div class="message-text">
+                        Ajira works. With commitment, dedication and consistency you can earn a decent living online. The future of work is digital.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
